@@ -1,0 +1,704 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Cati 🌷</title>
+
+<style>
+:root {
+  --cream: #fbf5ed;
+  --paper: #fffdf9;
+  --pink: #f2dcd5;
+  --coral: #c97865;
+  --coral-dark: #995b4d;
+  --yellow: #e8c66b;
+  --ink: #51433e;
+  --muted: #887873;
+  --line: #eaded5;
+  --shadow: 0 18px 50px rgba(105,72,59,.09);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: "Nunito", "Trebuchet MS", sans-serif;
+  line-height: 1.7;
+}
+
+h1,h2,h3,.serif {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(251,245,237,.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav {
+  max-width: 1080px;
+  margin: auto;
+  padding: 12px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand {
+  font-family: Georgia, serif;
+  color: var(--coral-dark);
+  font-size: 19px;
+}
+
+.navlinks {
+  display: flex;
+  gap: 17px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.navlinks a {
+  text-decoration: none;
+}
+
+.navlinks a:hover {
+  color: var(--coral-dark);
+}
+
+.hero {
+  min-height: 88vh;
+  display: grid;
+  place-items: center;
+  padding: 70px 22px 90px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 20%,#f6e4dc 0,transparent 28%),
+    radial-gradient(circle at 85% 70%,#f5e9c9 0,transparent 25%),
+    var(--cream);
+}
+
+.hero:before,.hero:after {
+  content: "🌷";
+  position: absolute;
+  font-size: clamp(45px,8vw,90px);
+  opacity: .16;
+  animation: float 7s ease-in-out infinite;
+}
+
+.hero:before {
+  left: 8%;
+  top: 17%;
+}
+
+.hero:after {
+  right: 9%;
+  bottom: 13%;
+  animation-delay: 1.5s;
+}
+
+.hero-inner {
+  max-width: 760px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 11px;
+  color: var(--coral-dark);
+}
+
+.hero h1 {
+  font-size: clamp(42px,8vw,78px);
+  margin: 18px 0;
+  color: #76534b;
+}
+
+.hero p {
+  max-width: 560px;
+  margin: 0 auto 28px;
+  color: var(--muted);
+  font-size: 17px;
+}
+
+.flower {
+  font-size: 48px;
+  display: inline-block;
+  animation: sway 4s ease-in-out infinite;
+}
+
+.btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 13px 23px;
+  background: var(--coral);
+  color: white;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(201,120,101,.2);
+  transition: .2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  background: var(--coral-dark);
+}
+
+.btn.secondary {
+  background: transparent;
+  color: var(--coral-dark);
+  border: 1px solid #d9b5a9;
+  box-shadow: none;
+}
+
+main {
+  max-width: 1000px;
+  margin: auto;
+  padding: 0 22px;
+}
+
+section {
+  padding: 82px 0;
+  scroll-margin-top: 70px;
+}
+
+.section-head {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 35px;
+}
+
+.section-head h2 {
+  font-size: clamp(30px,5vw,46px);
+  color: #76534b;
+  margin: 10px 0;
+}
+
+.section-head p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: clamp(22px,4vw,38px);
+  box-shadow: var(--shadow);
+}
+
+.letter {
+  max-width: 760px;
+  margin: auto;
+}
+
+.letter p {
+  margin: 0 0 16px;
+}
+
+.signature {
+  font-family: Georgia,serif;
+  color: var(--coral-dark);
+  font-size: 22px;
+  margin-top: 25px;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 22px;
+}
+
+.photo-card {
+  background: var(--paper);
+  padding: 14px 14px 20px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  transform: rotate(-1deg);
+}
+
+.photo-card:nth-child(2) {
+  transform: rotate(1deg);
+}
+
+.photo-card img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: 12px;
+  background: linear-gradient(135deg,#f4e5df,#f5edda);
+  display: block;
+}
+
+.photo-card h3 {
+  text-align: center;
+  color: var(--coral-dark);
+  font-size: 23px;
+  margin: 14px 0 3px;
+}
+
+.photo-card p {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0;
+}
+
+.hint {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 14px;
+}
+
+.distance {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 18px;
+  align-items: center;
+  text-align: center;
+}
+
+.place {
+  padding: 25px 12px;
+  background: #fffaf3;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+}
+
+.place .emoji { font-size: 35px; }
+
+.place strong {
+  display: block;
+  font-family: Georgia,serif;
+  font-size: 24px;
+  color: #76534b;
+}
+
+.connection {
+  color: var(--coral);
+  font-size: 28px;
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 14px;
+}
+
+.memory {
+  background: #fffaf3;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 22px;
+  text-align: center;
+}
+
+.memory span { font-size: 27px; }
+
+.memory h3 {
+  font-size: 21px;
+  color: #76534b;
+  margin: 10px 0 6px;
+}
+
+.memory p {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.video-wrap {
+  max-width: 720px;
+  margin: auto;
+}
+
+video {
+  width: 100%;
+  border-radius: 18px;
+  background: #f0e5dc;
+  display: block;
+}
+
+.media-note {
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 10px;
+}
+
+audio {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.final-card {
+  text-align: center;
+  max-width: 760px;
+  margin: auto;
+  background: linear-gradient(145deg,#fffdf9,#fbede7);
+}
+
+.final-card h2 {
+  font-size: clamp(32px,5vw,48px);
+  color: #76534b;
+}
+
+.final-question {
+  font-family: Georgia,serif;
+  font-size: clamp(23px,4vw,32px);
+  color: var(--coral-dark);
+  margin: 26px 0;
+}
+
+.final-note {
+  max-width: 570px;
+  margin: 0 auto 24px;
+  color: var(--muted);
+}
+
+.answer {
+  display: none;
+  margin: 22px auto 0;
+  padding: 18px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  max-width: 520px;
+  color: var(--muted);
+}
+
+.answer.show { display: block; }
+
+footer {
+  text-align: center;
+  padding: 32px 20px 48px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.tiny-flower { color: var(--coral); }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .7s ease,transform .7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes float {
+  0%,100% { translate: 0 0; }
+  50% { translate: 0 -15px; }
+}
+
+@keyframes sway {
+  0%,100% { transform: rotate(-7deg); }
+  50% { transform: rotate(7deg); }
+}
+
+@media(max-width:680px) {
+  .nav {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .navlinks { gap: 12px; }
+
+  .photo-grid,.memory-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .distance {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .connection { transform: rotate(90deg); }
+
+  section { padding: 62px 0; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <nav class="nav">
+    <div class="brand">Para Cati <span class="tiny-flower">✿</span></div>
+
+    <div class="navlinks">
+      <a href="#carta">Mi carta</a>
+      <a href="#fotos">Nuestros mundos</a>
+      <a href="#distancia">La distancia</a>
+      <a href="#recuerdos">Recuerdos</a>
+      <a href="#final">Al final</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="flower">🌷</div>
+    <div class="eyebrow">Un detalle hecho con cariño y mucho amor</div>
+    <h1>Para ti, Cati</h1>
+    <p>Hay cosas que quiero decirte con calma, y por eso preparé este pequeño espacio</p>
+    <a class="btn" href="#carta">Abrir mi carta ♡</a>
+  </div>
+</section>
+
+<main>
+
+<!-- CARTA -->
+<section id="carta" class="reveal">
+  <div class="section-head">
+    <div class="eyebrow">Primero, quiero decirte</div>
+    <h2>Lo que significas para mí</h2>
+    <p>Unas palabras que quería dejarte por escrito.</p>
+  </div>
+
+  <div class="card letter">
+    <p>Cati, quería hacerte algo especial porque eres una persona muy importante en mi vida y porque nuestra historia significa mucho para mí.</p>
+
+    <p>Me acuerdo de nuestras conversaciones, de las canciones, de las bromas, de las veces que nos acompañamos aunque estuviéramos lejos, me gusta compartir mis días contigo y también conocer los tuyos, incluso en esas pequeñas cosas que parecían simples.</p>
+
+    <p>Me gusta mucho los momentos que compartiste conmigo, las risas, las conversaciones y todo lo que me permitiste conocer de ti.</p>
+
+    <p>Y quiero que sepas que yo todavía quiero muchas cosas contigo, Cati. Quiero seguir compartiendo mis días contigo, conocer más de ti, escucharte hablar de cualquier cosita, verte feliz y estar para ti cuando necesites a alguien. Quiero que algún día podamos dejar de contar los kilómetros que nos separan y podamos abrazarnos, tomarnos de la manito y vivir todos esos momentos que tantas veces imaginamos. Quiero seguir construyendo nuestra historia y demostrarte con hechos lo mucho que significas para mí.<p>
+    <p>No quiero que lo nuestro se quede solamente en recuerdos bonitos, porque sinceramente yo todavía tengo muchas ganas de vivir más cosas contigo 💕</p>
+
+    <p class="signature">Con cariño y amor,<br>tu osito 🧸</p>
+  </div>
+</section>
+
+<!-- FOTOGRAFÍAS -->
+<section id="fotos" class="reveal">
+  <div class="section-head">
+    <div class="eyebrow">Dos mundos</div>
+    <h2>En lugares distintos, en una misma historia</h2>
+    <p>No tenemos una foto juntos, pero sí recuerdos y momentos que cada uno guarda desde su lugar.</p>
+  </div>
+
+  <div class="photo-grid">
+    <article class="photo-card">
+      <img src="fotos/cati/cati1.jpg" alt="Fotografía de Cati"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+
+      <div class="photo-placeholder" style="display:none;aspect-ratio:4/5;place-items:center;background:#f5e8e1;border-radius:12px;color:#9b756a;text-align:center;padding:20px">
+        Agrega aquí una foto de Cati<br>fotos/cati/cati1.jpg
+      </div>
+
+      <h3>Tu mundo 🌷</h3>
+      <p>Una personita que llegó a significar mucho para mí.</p>
+    </article>
+
+    <article class="photo-card">
+      <img src="fotos/fabricio/fab1.jpg" alt="Fotografía de Fabricio"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+
+      <div class="photo-placeholder" style="display:none;aspect-ratio:4/5;place-items:center;background:#f5edda;border-radius:12px;color:#9b756a;text-align:center;padding:20px">
+        Agrega aquí una foto tuya<br>fotos/fabricio/fab1.jpg
+      </div>
+
+      <h3>Mi mundo 🧸</h3>
+      <p>Desde aquí también guardo con cariño nuestra historia.</p>
+    </article>
+  </div>
+
+ 
+</section>
+
+<!-- DISTANCIA -->
+<section id="distancia" class="reveal">
+  <div class="section-head">
+    <div class="eyebrow">Perú · Argentina</div>
+    <h2>La distancia</h2>
+    <p>Estábamos en países diferentes, pero encontramos formas de compartir tiempo, acompañarnos y amarnos</p>
+  </div>
+
+  <div class="card">
+    <div class="distance">
+      <div class="place">
+        <div class="emoji">🇵🇪</div>
+        <strong>Perú</strong>
+        <span>Mi lugar</span>
+      </div>
+
+      <div class="connection">♡ ─── ♡</div>
+
+      <div class="place">
+        <div class="emoji">🇦🇷</div>
+        <strong>Argentina</strong>
+        <span>Tu lugar</span>
+      </div>
+    </div>
+
+    <p style="text-align:center;color:var(--muted);max-width:610px;margin:25px auto 0">
+      A veces la distancia se hacía difícil, pero me gustaba cuando una llamada o un mensaje hacía que el día se sintiera un poquito más cercano
+    </p>
+  </div>
+</section>
+
+<!-- RECUERDOS -->
+<section id="recuerdos" class="reveal">
+  <div class="section-head">
+    <div class="eyebrow">Pequeñas cosas</div>
+    <h2>Recuerdos que guardo</h2>
+    <p>Algunas cosas sencillas que hacen especial nuestra historia</p>
+  </div>
+
+  <div class="memory-grid">
+    <article class="memory">
+      <span>💬</span>
+      <h3>Nuestras charlas</h3>
+      <p>Los mensajes, las bromas y esas conversaciones que quiero seguir teniendo</p>
+    </article>
+
+    <article class="memory">
+      <span>🎶</span>
+      <h3>Nuestras canciones</h3>
+      <p>Melodías que me hacen recordar momentos y sentimientos, especialmente la primera canción "Catorce"</p>
+    </article>
+
+    <article class="memory">
+      <span>🌷</span>
+      <h3>Nuestras llamadas</h3>
+      <p>Cuando nos quedabamos horas y horas hablando o viendo videos jeje</p>
+    </article>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <label for="song" style="font-weight:700;color:var(--coral-dark)">
+
+    </label>
+
+    <audio id="song" controls preload="none">
+      <source src="musica/cancion.mp3" type="audio/mpeg">
+      Tu navegador no puede reproducir este audio.
+    </audio>
+
+    <p class="media-note">
+      
+    </p>
+  </div>
+</section>
+
+<!-- SUEÑOS -->
+<section id="suenos" class="reveal">
+  <div class="section-head">
+    <div class="eyebrow">Lo que imagino</div>
+    <h2>Los sueños que tengo contigo</h2>
+  </div>
+
+  <div class="card letter">
+    <p>Me hace ilusión poder viajar a Argentina, conocerte en persona, abrazarte, compartir un día normal contigo y conocer a las personas importantes de tu vida</p>
+
+    <p>También imagino muchos momentos sencillos como caminar juntos, reírnos por cualquier cosa, conocer lugares nuevos y crear recuerdos que esta vez sí pudiéramos guardar en fotografías juntos</p>
+
+    <p>Tambien uno de mis sueños es casarme contigo, ser una linda pareja de esposos y formar una hermosa familia juntos ❤️</p>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section id="video" class="reveal">
+  <div class="section-head">
+    <div class="eyebrow">Un videito</div>
+    <h2>Unas palabras en mi voz</h2>
+    <p>También preparé un video para decirte algunas cosas personalmente</p>
+  </div>
+
+  <div class="video-wrap">
+    <video controls playsinline preload="metadata">
+      <source src="video/carta.mp4" type="video/mp4">
+      Tu navegador no puede reproducir este video.
+    </video>
+
+    <p class="media-note">
+     
+    </p>
+  </div>
+</section>
+
+<!-- PREGUNTA FINAL -->
+<section id="final" class="reveal">
+  <div class="card final-card">
+    <div class="flower">🌷</div>
+
+    <div class="eyebrow">Antes de terminar</div>
+
+    <h2>Quería preguntarte algo, Cati</h2>
+
+    <p class="final-note">
+      Después de todo lo que te dije, quiero ser honesto, todavía siento mucho amor por ti y todavia
+      quiero seguir construyendo nuestra relación. Quiero estar junto a ti en las buenas y malas y apoyarte siempre
+    </p>
+
+    <div class="final-question">
+      ¿Te gustaría considerar volver a intentarlo conmigo?
+    </div>
+
+  
+    <button class="btn secondary" id="thanksBtn" type="button">
+      Leer un último mensajito
+    </button>
+
+    <div class="answer" id="thanksMessage">
+      Gracias por tomarte el tiempo de llegar hasta aquí, Cati
+      </p>♡ TE AMO MUCHO ♡</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Hecho con amor, desde Perú para Cati en Argentina
+  <span class="tiny-flower">🌷</span>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, {threshold: 0.12});
+
+document.querySelectorAll('.reveal').forEach(el => {
+  observer.observe(el);
+});
+
+document.getElementById('thanksBtn').addEventListener('click', () => {
+  document.getElementById('thanksMessage').classList.add('show');
+  document.getElementById('thanksBtn').textContent = 'Gracias por leer ♡';
+});
+</script>
+
+</body>
+</html>
